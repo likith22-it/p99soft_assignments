@@ -1,0 +1,19 @@
+# Nested React app artifacts
+your-app-name/node_modules/
+your-app-name/dist/
+your-app-name/build/
+your-app-name/.DS_Store
+your-app-name/.env
+your-app-name/.env.*
+
+# Environment files
+.env
+.env.*
+
+# IDE/editor files
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log

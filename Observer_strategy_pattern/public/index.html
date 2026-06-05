@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Design Patterns Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Behavioral Design Patterns</h1>
+
+        <!-- STRATEGY PATTERN -->
+        <div class="card">
+            <h2>Strategy Pattern - Payment System</h2>
+
+            <input type="number" id="amount" placeholder="Enter amount">
+
+            <select id="paymentMethod">
+                <option value="card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="upi">UPI</option>
+            </select>
+
+            <button onclick="makePayment()">
+                Pay Now
+            </button>
+
+            <p id="paymentResult"></p>
+        </div>
+
+        <!-- OBSERVER PATTERN -->
+        <div class="card">
+            <h2>Observer Pattern - YouTube Channel</h2>
+
+            <input type="text" id="subscriberName" placeholder="Enter username">
+
+            <button onclick="subscribeUser()">
+                Subscribe
+            </button>
+
+            <button onclick="uploadVideo()">
+                Upload Video
+            </button>
+
+            <div id="subscriberList"></div>
+
+            <div id="notifications"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

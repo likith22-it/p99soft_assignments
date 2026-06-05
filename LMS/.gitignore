@@ -1,0 +1,25 @@
+# Python virtual environment
+venv/
+.env
+.env.*
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Testing artifacts
+.pytest_cache/
+report.xml
+
+# Logs and temporary files
+*.log
+*.sqlite3
+*.db
+
+# IDE/editor files
+.vscode/
+.idea/
+.DS_Store

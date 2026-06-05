@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Weather Application</h1>
+
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username" value="admin">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password" value="password123">
+        </div>
+
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" placeholder="Enter city name">
+        </div>
+
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div id="result"></div>
+
+    </div>
+
+<script>
+
+async function getWeather() {
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const city = document.getElementById('city').value;
+
+    const resultDiv = document.getElementById('result');
+
+    resultDiv.innerHTML = "<p>Loading...</p>";
+
+    try {
+
+        const response = await fetch(
+            `/weather?city=${city}&username=${username}&password=${password}`
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        if (data.error || data.detail) {
+
+            resultDiv.innerHTML = `
+                <div class="error-box">
+                    <h3>Error</h3>
+                    <p>${data.error || data.detail}</p>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            return;
+        }
+
+        resultDiv.innerHTML = `
+            <div class="weather-card">
+
+                <h2>${data.city}</h2>
+
+                <div class="weather-item">
+                    <strong>Temperature:</strong>
+                    ${data.temperature} °C
+                </div>
+
+                <div class="weather-item">
+                    <strong>Humidity:</strong>
+                    ${data.humidity}%
+                </div>
+
+                <div class="weather-item">
+                    <strong>Weather:</strong>
+                    ${data.weather}
+                </div>
+
+            </div>
+        `;
+        resultDiv.style.display = 'block';
+
+    } catch(error) {
+
+        console.error(error);
+
+        resultDiv.innerHTML = `
+            <div class="error-box">
+                <h3>Connection Error</h3>
+                <p>Unable to fetch weather data</p>
+            </div>
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
